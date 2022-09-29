@@ -1,8 +1,26 @@
 import React from 'react';
 import './Details.css'
+import { useState, useEffect } from 'react';
+import { addToDb } from '../../utilities/localdb';
 
 
 const Details = () => {
+
+    const [breakTime,setBreakTime] = useState(0)
+    console.log(breakTime);
+    
+
+    const handleBreakBtn = (id) => {
+
+       const breakTime = document.getElementById(id);
+       const breakSecond = breakTime.innerText;
+       
+       setBreakTime(breakSecond);
+       addToDb(id)
+    
+
+        
+    }
     return (
         <div className='details'>
             <div className="user">
@@ -26,27 +44,33 @@ const Details = () => {
                     <p className='user-location'>Age</p>
                 </div>
             </div>
+            <br />
+            <br />
+            <br />
             <div>
                 <h3>Add A Break</h3>
             </div>
             <div className='user-info'>
                 <div>
-                    <button className='brk-btn'>10s</button>
+                    <button onClick={()=>handleBreakBtn(10)} className='brk-btn'><span id='10'>10</span>s</button>
                 </div>
                 <div>
-                    <button className='brk-btn'>20s</button>
+                    <button onClick={()=>handleBreakBtn(20)} className='brk-btn'><span id='20'>20</span>s</button>
                 </div>
                 <div>
-                    <button className='brk-btn'>30s</button>
+                    <button onClick={()=>handleBreakBtn(30)} className='brk-btn'><span id='30'>30</span>s</button>
                 </div>
                 <div>
-                    <button className='brk-btn'>40s</button>
+                    <button onClick={()=>handleBreakBtn(40)} className='brk-btn'><span id='40'>40</span>s</button>
                 </div>
                 <div>
-                    <button className='brk-btn'>50s</button>
+                    <button onClick={()=>handleBreakBtn(50)} className='brk-btn'><span id='50'>50</span>s</button>
                 </div>
             </div>
             <div>
+                <br />
+                <br />
+                <br />
                 <h3>Exercise Details</h3>
             </div>
             <div className='user-info'>
@@ -54,7 +78,7 @@ const Details = () => {
                     <h4>Exercise-Time</h4>
                 </div>
                 <div>
-                    <p><span>0</span>seconds</p>
+                    <p><strong >0</strong> seconds</p>
                 </div>
                 
             </div>
@@ -63,7 +87,7 @@ const Details = () => {
                     <h4>Break-Time</h4>
                 </div>
                 <div>
-                    <p><span>0</span>seconds</p>
+                    <p><strong id='set-breakTime'>{breakTime}</strong> seconds</p>
                 </div>
                 
             </div>
