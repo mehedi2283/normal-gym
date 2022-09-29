@@ -1,32 +1,87 @@
-.gym{
+.gym {
     display: grid;
     grid-template-columns: 4fr 1fr;
     position: relative;
 
 }
-.gym-name{
+
+.gym-name {
     color: rgba(70, 70, 226, 0.74);
 }
-.workout-container{
-   
+
+.workout-container {
+
     background-color: rgb(238, 246, 255);
     padding: 10%;
     padding-top: 5%;
 }
 
-.workout-cards{
-  
-     display: grid;
-     grid-template-columns: repeat(3,1fr);
-     justify-items:auto;
-     padding-top: 20px;
-    
-     
-    
+.workout-cards {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: auto;
+    padding-top: 20px;
+    column-gap: 10px;
+
+
+
 }
-.details-container{
-    background-color:white;
+
+.details-container {
+    background-color: white;
     position: sticky;
     top: 0;
-    
+
+}
+
+@media (max-width: 958px) {
+
+    .gym {
+
+        grid-template-columns: 1fr;
+
+
+
+    }
+
+    .workout-cards {
+
+
+        grid-template-columns: 1fr;
+
+        justify-items: center;
+
+
+
+
+    }
+
+    .workout-container {
+
+        order: 1;
+    }
+
+    .details-container {
+        background-color: white;
+        position: relative;
+        top: 0;
+
+    }
+
+}
+@media (min-width: 669px) and (max-width: 1300px){
+
+    .workout-cards {
+
+
+        grid-template-columns: 1fr 1fr;
+
+        justify-items: center;
+        
+
+
+
+
+    }
 }
