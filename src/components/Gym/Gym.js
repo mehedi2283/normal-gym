@@ -6,8 +6,8 @@ import './Gym.css'
 const Gym = () => {
 
     const [workouts,setWorkouts] = useState([]);
-    const [timeRequired,setTimeRequired] = useState([0]);
-   
+    const [timeRequired,setTimeRequired] = useState([]);
+    // console.log(timeRequired);
     
 
     useEffect( () => {
@@ -18,14 +18,17 @@ const Gym = () => {
     },[])
 
     const handleAddToList = (workout) =>{
-        console.log(workout);
+        const newTimeRequired = [...timeRequired,workout.time];
+        setTimeRequired(newTimeRequired);
+
+        
 
 
     }
     return (
         <div className='gym'>
             <div className='workout-container'>
-            <h1>Normal Gym</h1>
+            <h1 className='gym-name'>Normal Gym</h1>
             <h3>Todays's workout</h3>
                
                <div className='workout-cards'>
@@ -41,7 +44,7 @@ const Gym = () => {
             </div>
 
             <div className='details-container'>
-               <Details ></Details>
+               <Details timeRequired = {timeRequired}></Details>
             </div>
         </div>
     );

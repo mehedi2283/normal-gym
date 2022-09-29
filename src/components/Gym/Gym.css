@@ -4,10 +4,14 @@
     position: relative;
 
 }
+.gym-name{
+    color: rgba(57, 57, 196, 0.74);
+}
 .workout-container{
    
     background-color: rgb(238, 246, 255);
     padding: 10%;
+    padding-top: 5%;
 }
 
 .workout-cards{

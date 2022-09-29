@@ -2,39 +2,61 @@ import React from 'react';
 import './Details.css'
 import { useState, useEffect } from 'react';
 import { addToDb, getTime } from '../../utilities/localdb';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const Details = () => {
+const Details = ({ timeRequired }) => {
+    const notify = () => toast.success(' Completed all exercise.', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        // backgroundColor:,
+        });
 
-    const [breakTime,setBreakTime] = useState(0)
-    // console.log(breakTime);
-    
-   
+
+    // console.log(timeRequired);
+
+    let totalTimeRequired = 0;
+    for (const time of timeRequired) {
+        totalTimeRequired = totalTimeRequired + time;
+    }
+    console.log(totalTimeRequired);
+
+
+    const [breakTime, setBreakTime] = useState(0)
+
+
 
     const handleBreakBtn = (id) => {
 
-       const breakTimes = document.getElementById(id);
-       const breakSecond = breakTimes.innerText;
-       
-       setBreakTime(breakSecond);
-       addToDb(id)
-    
+        const breakTimes = document.getElementById(id);
+        const breakSecond = breakTimes.innerText;
 
-        
+        setBreakTime(breakSecond);
+        addToDb(id)
+
+
+
     }
 
-    useEffect( ()=>{
+    useEffect(() => {
         const storedTime = getTime();
-        console.log(storedTime);
         document.getElementById('set-breakTime').innerText = storedTime;
 
-        
+
     },
         [breakTime]
-        
-)
+
+    )
     return (
         <div className='details'>
+
             <div className="user">
                 <img src='user-img.jpg' alt="" />
                 <div>
@@ -64,19 +86,19 @@ const Details = () => {
             </div>
             <div className='user-info'>
                 <div>
-                    <button onClick={()=>handleBreakBtn(10)} className='brk-btn'><span id='10'>10</span>s</button>
+                    <button onClick={() => handleBreakBtn(10)} className='brk-btn'><span id='10'>10</span>s</button>
                 </div>
                 <div>
-                    <button onClick={()=>handleBreakBtn(20)} className='brk-btn'><span id='20'>20</span>s</button>
+                    <button onClick={() => handleBreakBtn(20)} className='brk-btn'><span id='20'>20</span>s</button>
                 </div>
                 <div>
-                    <button onClick={()=>handleBreakBtn(30)} className='brk-btn'><span id='30'>30</span>s</button>
+                    <button onClick={() => handleBreakBtn(30)} className='brk-btn'><span id='30'>30</span>s</button>
                 </div>
                 <div>
-                    <button onClick={()=>handleBreakBtn(40)} className='brk-btn'><span id='40'>40</span>s</button>
+                    <button onClick={() => handleBreakBtn(40)} className='brk-btn'><span id='40'>40</span>s</button>
                 </div>
                 <div>
-                    <button onClick={()=>handleBreakBtn(50)} className='brk-btn'><span id='50'>50</span>s</button>
+                    <button onClick={() => handleBreakBtn(50)} className='brk-btn'><span id='50'>50</span>s</button>
                 </div>
             </div>
             <div>
@@ -90,9 +112,9 @@ const Details = () => {
                     <h4>Exercise-Time</h4>
                 </div>
                 <div>
-                    <p><strong >0</strong> seconds</p>
+                    <p><strong >{totalTimeRequired}</strong> seconds</p>
                 </div>
-                
+
             </div>
             <div className='user-info'>
                 <div>
@@ -101,10 +123,22 @@ const Details = () => {
                 <div>
                     <p><strong id='set-breakTime'>{breakTime}</strong> seconds</p>
                 </div>
-                
+
             </div>
 
-            <button className='complete-btn'>Activity Completed</button>
+
+            <div>
+                <button className='complete-btn' onClick={notify}>Activity Completed</button>
+                <ToastContainer position="top-center"
+                    autoClose={200}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover />
+            </div>
 
 
         </div>
