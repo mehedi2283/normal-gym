@@ -1,19 +1,20 @@
 import React from 'react';
 import './Details.css'
 import { useState, useEffect } from 'react';
-import { addToDb } from '../../utilities/localdb';
+import { addToDb, getTime } from '../../utilities/localdb';
 
 
 const Details = () => {
 
     const [breakTime,setBreakTime] = useState(0)
-    console.log(breakTime);
+    // console.log(breakTime);
     
+   
 
     const handleBreakBtn = (id) => {
 
-       const breakTime = document.getElementById(id);
-       const breakSecond = breakTime.innerText;
+       const breakTimes = document.getElementById(id);
+       const breakSecond = breakTimes.innerText;
        
        setBreakTime(breakSecond);
        addToDb(id)
@@ -21,6 +22,17 @@ const Details = () => {
 
         
     }
+
+    useEffect( ()=>{
+        const storedTime = getTime();
+        console.log(storedTime);
+        document.getElementById('set-breakTime').innerText = storedTime;
+
+        
+    },
+        [breakTime]
+        
+)
     return (
         <div className='details'>
             <div className="user">

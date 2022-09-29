@@ -6,7 +6,7 @@ import './Gym.css'
 const Gym = () => {
 
     const [workouts,setWorkouts] = useState([]);
-    // const [cart,setCart] = useState([]);
+    const [timeRequired,setTimeRequired] = useState([0]);
    
     
 
@@ -16,6 +16,12 @@ const Gym = () => {
             .then(data => setWorkouts(data))
             
     },[])
+
+    const handleAddToList = (workout) =>{
+        console.log(workout);
+
+
+    }
     return (
         <div className='gym'>
             <div className='workout-container'>
@@ -25,7 +31,7 @@ const Gym = () => {
                <div className='workout-cards'>
                { 
                workouts.map(workout => <Workout
-                // handleAddToCart = {handleAddToCart}
+                handleAddToList = {handleAddToList}
                key = {workout._id}
                workout = {workout}
                ></Workout>)

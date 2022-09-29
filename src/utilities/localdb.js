@@ -1,4 +1,15 @@
 const addToDb = id => {
-    localStorage.setItem( 1,id);
+    localStorage.setItem( 'Key', JSON.stringify(id));
 }
-export {addToDb}
+
+const getTime = () => {
+
+ const storedData = localStorage.getItem( 'Key');
+ return storedData;
+}
+
+
+export {
+    addToDb,
+    getTime
+}
