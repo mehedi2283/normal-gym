@@ -1,0 +1,27 @@
+.gym{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    position: relative;
+
+}
+.workout-container{
+   
+    background-color: rgb(238, 246, 255);
+    padding: 10%;
+}
+
+.workout-cards{
+  
+     display: grid;
+     grid-template-columns: repeat(3,1fr);
+     justify-items:auto;
+     padding-top: 20px;
+    
+     
+    
+}
+.details-container{
+    background-color:white;
+    position: sticky;
+    top: 0;
+}
