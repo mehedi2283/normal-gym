@@ -6,8 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-
-const Details = ({ timeRequired }) => {
+    
+    const Details = ({ timeRequired }) => {
     const notify = () => toast.success(' Completed all exercise.', {
         position: "top-center",
         autoClose: 2000,
@@ -16,17 +16,18 @@ const Details = ({ timeRequired }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        // backgroundColor:,
+        
+
+        
+
         });
-
-
-    // console.log(timeRequired);
+        
 
     let totalTimeRequired = 0;
     for (const time of timeRequired) {
         totalTimeRequired = totalTimeRequired + time;
     }
-    console.log(totalTimeRequired);
+    // console.log(totalTimeRequired);
 
 
     const [breakTime, setBreakTime] = useState(0)
@@ -112,7 +113,7 @@ const Details = ({ timeRequired }) => {
                     <h4>Exercise-Time</h4>
                 </div>
                 <div>
-                    <p><strong >{totalTimeRequired}</strong> seconds</p>
+                    <p><strong id='exercise-time'>{totalTimeRequired}</strong> seconds</p>
                 </div>
 
             </div>
